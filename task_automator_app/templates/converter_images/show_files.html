@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<!--    {% for file in files %}-->
+<!--    <div style="display:inline"><p><span>{{file}}</span><a href="/converter_images/convert_to_png/{{file}}" download="">Конвертувати</a></p></div>-->
+<!--    {% endfor %}-->
+<!--    {% if files.count  == 0 %}-->
+<!--        <p>Немає файлів</p>-->
+<!--    {% endif %}-->
+<section class="vh-100" style="background-color: #eee;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-lg-9 col-xl-10">
+                <div class="card rounded-3">
+                    <div class="card-body p-4">
+
+                        {% if files.count == 0 %}
+                        <h4 class="text-center my-3 pb-3">Немає файлів</h4>
+                        {% else %}
+                        <h4 class="text-center my-3 pb-3">Список файлів</h4>
+
+                        <table class="table mb-4">
+
+                            <thead>
+                            <tr>
+                                <th scope="col">№</th>
+                                <th scope="col">Файли</th>
+                                <th scope="col">Дата загрузки</th>
+                                <th scope="col">Дії</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for file in files %}
+                            <tr>
+                                <th scope="row">{{forloop.counter}}</th>
+                                <td>{{file}}</td>
+                                <td>{{file.uploaded_at}}</td>
+                                <td>
+                                    <a type="submit" class="btn btn-danger"  href="/converter_images/delete/{{file}}">Видалити</a>
+                                    <a type="submit" class="btn btn-success ms-1" href="/converter_images/convert_to_png/{{file}}" download>Конвертувати JPG В PDF</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock main %}

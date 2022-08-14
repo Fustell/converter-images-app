@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{title}}</title>
-</head>
-<body>
-    <h1>Це є конвертер зображень</h1>
-    <form enctype="multipart/form-data" action="upload/image" method="post">
-        <input type="file" id=""image-file>
-        <button type="submit">Відправити</button>
-        {% csrf_token %}
-    </form>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block main %}
+{% endblock main %}
