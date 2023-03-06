@@ -168,3 +168,5 @@ cmake-build-debug/
 
 # Sonarlint plugin
 .idea/sonarlint
+
+migrations

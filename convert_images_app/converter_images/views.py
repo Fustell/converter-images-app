@@ -1,18 +1,22 @@
-from django.shortcuts import render
-from django.shortcuts import HttpResponse,HttpResponseRedirect,Http404
+from django.shortcuts import render,HttpResponse,HttpResponseRedirect,Http404
+from django.contrib.auth.models import User
+from django.urls import reverse_lazy
+from django.views import generic
+from django.contrib.auth.forms import UserCreationForm
+from django.conf import settings
 from PIL import Image
 from .forms import DocumentForm
 from .models import Document
-from django.conf import settings
+from django.http import JsonResponse
+from django.core.serializers.json import DjangoJSONEncoder
+
 import os
 
-CONVERTED_IMAGES_ROOT = 'F:/task-automator-app/task_automator_app/media/converted_images'
-DOCUMENTS_ROOT = 'F:/task-automator-app/task_automator_app/media/documents'
-
+CONVERTED_IMAGES_ROOT = os.path.join( os.getcwd(), 'media/converted_images')
+DOCUMENTS_ROOT =os.path.join( os.getcwd(), 'media/documents')
 
 def index(request):
     return render(request, 'converter_images/index.html', {'title':'Головна сторінка'})
-
 
 def model_form_upload(request):
     if request.method == 'POST':
